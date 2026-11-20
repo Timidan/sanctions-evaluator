@@ -1,0 +1,75 @@
+{
+ "read_at": "2026-11-20T07:03Z",
+ "node": "https://devnode.telegraphprotocol.com",
+ "submitter": "0xc82E3a196d25841EAB45fff5Ce2A64f5D986370d",
+ "note": "Counts only. Row hashes and row text are left out because the rows are part of hidden evaluation pools.",
+ "intents": {
+  "SANCTIONS_SCREENING_MATCH_GENERAL": {
+   "our_rows": 298,
+   "by_status": {
+    "eligible": 298
+   },
+   "by_provenance_class": {
+    "attested": 184,
+    "unverified": 114
+   },
+   "first_created_at": "2026-11-15T02:07:35.958188Z",
+   "pool": {
+    "eligible_rows": 3187,
+    "submitters": 16,
+    "active_snapshot": {
+     "rows": 3187,
+     "submitters": 16,
+     "published_at": "2026-11-18T18:49:31.547752Z",
+     "activation_epoch": 12,
+     "corpus_version": "62e6136e482c5fa13130d95e2ea763d97a1171c5afb3ad38b405f5d120c39dfc"
+    },
+    "min_submitters": 3
+   }
+  },
+  "CONTENT_MODERATION_GENERAL": {
+   "our_rows": 98,
+   "by_status": {
+    "eligible": 98
+   },
+   "by_provenance_class": {
+    "unverified": 98
+   },
+   "first_created_at": "2026-11-17T02:28:59.384051Z",
+   "pool": {
+    "eligible_rows": 268,
+    "submitters": 5,
+    "active_snapshot": {
+     "rows": 268,
+     "submitters": 5,
+     "published_at": "2026-11-17T03:45:02.348963Z",
+     "activation_epoch": 0,
+     "corpus_version": "6451a7d657ab300f8540b5d6fb9266fd5aceb7aa2cceacaf0c3daf8899789620"
+    },
+    "min_submitters": 3
+   }
+  },
+  "WEB_SEARCH_GENERAL": {
+   "our_rows": 100,
+   "by_status": {
+    "eligible": 100
+   },
+   "by_provenance_class": {
+    "attested": 100
+   },
+   "first_created_at": "2026-11-17T02:34:17.597472Z",
+   "pool": {
+    "eligible_rows": 466,
+    "submitters": 5,
+    "active_snapshot": {
+     "rows": 466,
+     "submitters": 5,
+     "published_at": "2026-11-17T03:45:04.533269Z",
+     "activation_epoch": 0,
+     "corpus_version": "c0a189f85b9a3c4d14fc61c63bd08fef2e01b363fe4a100292e272afa3197099"
+    },
+    "min_submitters": 3
+   }
+  }
+ }
+}

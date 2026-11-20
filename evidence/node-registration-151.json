@@ -1,0 +1,47 @@
+[
+  {
+    "rank": null,
+    "registration_id": 151,
+    "author_address": "0x8d1a7ca01fc8fa84000a7c7a1cf9e01f644a84b7",
+    "intent_id": "SANCTIONS_SCREENING_MATCH",
+    "wasm_url": "https://raw.githubusercontent.com/sadiqkhzn/lora-eval-packages/390a3135da3958eb03c559e23215e05eebbea9c1/SANCTIONS_JUDGE_c.safetensors",
+    "wasm_runnable_url": "https://poet-feature-brown-carnival.trycloudflare.com",
+    "wasm_hash": "5be693ea0f33be149c62cef7a73f2f7ca3e45e184226e292d176c06936c66449",
+    "activation_status": "rejected",
+    "stage": "rejected",
+    "bond_amount": 0,
+    "is_champion": false,
+    "eval_score": 0.6551724,
+    "eval": {
+      "decision": "lost",
+      "reason": "lost the competition for SANCTIONS_SCREENING_MATCH: win rate 65.52% on 29 pairs is below the absolute floor 70.00%",
+      "corpus_version": "2faf787a104334300f7df21cbcb5b25dc559a0837bf374804d2d6be223025a1b",
+      "sample_root": "be6f2535abde5ceb06b5170911a0f69170eac10fbba074db794f33430743ee1a",
+      "seed": {
+        "epoch_id": 19,
+        "block_hash": "47476ad8ce10cdd753a4e14a71ad7a73b034be034e54a906dab8273cc30a6c3c",
+        "intent_id": "SANCTIONS_SCREENING_MATCH",
+        "corpus_version": "2faf787a104334300f7df21cbcb5b25dc559a0837bf374804d2d6be223025a1b",
+        "seed": "59752591d5ae7ed4b8552b733c64fa24b55e29423e8d57bf6897d4e8331dc08a"
+      },
+      "candidate_win_rate": 0.6551724137931034,
+      "candidate_pairs": 29,
+      "incumbent_registration_id": "96",
+      "incumbent_win_rate": 0.6896551724137931,
+      "incumbent_pairs": 29,
+      "replacement_margin": 0.02,
+      "min_win_rate": 0.7,
+      "child_min_win_rate": 0.6,
+      "rank": 1,
+      "round_candidates": 1,
+      "foundation_hash": "0a49b325304bb4cf292e683929689d0457966be264f60bfc94d0072b614bf8e6",
+      "engine_hash": "77643d6e1176ab8744801cef93ccb844d0136ed32b8daa865d541f37d13292de",
+      "tokenizer_hash": "67bc76f8b9386efba1a761c1c8e5ad439fd0eaf1c2826e9dd1a205c7af4dc456",
+      "precision": "wasm-f32",
+      "input_root": "e0fce59a5b0945d28a7502b15fb6463c8df1af2894539163daf3063262cb8a4a"
+    },
+    "rejection_reason": "lost the competition for SANCTIONS_SCREENING_MATCH: win rate 65.52% on 29 pairs is below the absolute floor 70.00%",
+    "registered_at": "2026-11-19T20:30:24Z",
+    "updated_at": "2026-11-19T22:21:24Z"
+  }
+]

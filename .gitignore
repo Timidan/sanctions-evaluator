@@ -1,0 +1,22 @@
+# Private by default: research notes, training data, pool rows, packages and run outputs stay out of git.
+# Public files are listed one by one.
+/*
+!/.gitignore
+!/README.md
+!/requirements.txt
+!/score_pairs.py
+!/build_pairs.py
+!/baseline/
+/baseline/pkg/
+/baseline/scores.*
+!/gen/
+/gen/*
+!/gen/build_r8.py
+!/scripts/
+/scripts/*
+!/scripts/fetch_lists.sh
+!/scripts/kaggle_train.sh
+!/scripts/kaggle_run.py
+!/scripts/package.sh
+!/evidence/
+__pycache__/

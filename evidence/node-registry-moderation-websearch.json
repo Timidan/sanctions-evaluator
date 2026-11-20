@@ -1,0 +1,22 @@
+{
+ "read_at": "2026-11-20T07:03Z",
+ "node": "https://devnode.telegraphprotocol.com",
+ "registries": {
+  "CONTENT_MODERATION": {
+   "registration_ids": [],
+   "top_level_keys": [
+    "count",
+    "intents",
+    "resolve"
+   ]
+  },
+  "WEB_SEARCH": {
+   "registration_ids": [],
+   "top_level_keys": [
+    "count",
+    "intents",
+    "resolve"
+   ]
+  }
+ }
+}

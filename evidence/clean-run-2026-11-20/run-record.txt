@@ -1,0 +1,19 @@
+Clean-copy run of baseline/run.sh, 20 Nov 2026 06:32 to 07:00 UTC, 12 threads, on all 1,268 pairs as the reviewers wrote them.
+registration 87 package keccak256: 9252f2fe8fc50b6cc7e6716594a1190016a619ab65f22828dd3d257cca6c8c31  registry wasm_hash: 9252f2fe8fc50b6cc7e6716594a1190016a619ab65f22828dd3d257cca6c8c31
+registration 96 package keccak256: 6b4790822a2df4362833c34e4e2f39e958f8ff01c2d83d9d9e3c7371f8c31f5d  registry wasm_hash: 6b4790822a2df4362833c34e4e2f39e958f8ff01c2d83d9d9e3c7371f8c31f5d
+kit: telegraphprotocol/telegraph-wasm-baseline at 1ed063e; foundation graph sha256 checked against the release SHA256SUMS (copied from a local download, not re-downloaded).
+python: Python 3.12.12; onnxruntime 1.32.0, transformers 5.23.0, numpy 2.5.5
+Afterwards 132 rows were withheld from the public files and their scores removed from scores.jsonl: 95 rows using 54 real people as clean subjects with their 23 twin partners, then 14 rows using organisations named after real people or sample payees whose names match real people. Totals before: reg87 899, reg96 739 of 1,268. Totals after: reg87 816, reg96 681 of 1,136.
+The provider-format file was renamed from provider_format_20.jsonl to provider_format.jsonl after its rows fell from 20 to 16.
+sha256 of the public test files after that removal:
+887d0772502f9e32515d67ce105909ee0591e3df5dc79dedf4f135d9371fb75c  fixtures/agy_clean_flagged.jsonl
+fe810016ca0160d30ed64ce78b2311e0c3bb78faaca421db380cea26b7d1e1e6  fixtures/agy_listed_cleared.jsonl
+ea6f2fb14f240e4013d4cddac5ad937da544f33e2ace2597eb974fc8ddf211da  fixtures/agy_regression.jsonl
+2b644e9fb6174b33f5757b3722c1437115281afba38909cc7d5dd5d5a019fec5  fixtures/agy_short_forms.jsonl
+40e05453e4cd26066c9f63fb1b9cc05f8b9b97fc6b745d5177fe9d9351025370  fixtures/agy_subject_twins.jsonl
+4c88beba1fe7d454cfabe2af492e04b88cbfe17499757b20016f9999d0710b12  fixtures/astra_clean_flagged.jsonl
+264e586ef64659a236bce2b3ed610c470c76da1c93777e638ed4147793df123f  fixtures/astra_listed_cleared.jsonl
+a884365626044ac94aa472504d24f14af1c597fc1ca4b28178adcfbd367c37a1  fixtures/astra_regression.jsonl
+fe650235fa7667995d3406282a58d939a031b9c5a6b4226d8e3548a5d0de66be  fixtures/astra_short_forms.jsonl
+a5d45085f9cf0354e7ba645e066bfca3fb695fe414b15c05dc6abba772225e49  fixtures/astra_subject_twins.jsonl
+6ae6185cd0bd4d70f3b32ff16e6610604b303ed16275a2c4e55ba90f403f0f88  fixtures/provider_format.jsonl
