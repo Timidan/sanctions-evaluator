@@ -14,14 +14,17 @@ Network activity used Telegraph's test network on Ethereum Sepolia; the comparis
 | 86 | 17 Nov 2026 | r8a, keccak256 `0x46e8c542…ca37` | Rejected: 68.97% on 29 hidden pairs (20 of 29), below the 70% floor |
 | 87 | 18 Nov 2026 | r8c, keccak256 `0x9252f2fe8fc50b6cc7e6716594a1190016a619ab65f22828dd3d257cca6c8c31` | Promoted as the family's first Canonical module: 75.86% on 29 pairs (22 of 29), floor 70% |
 | 96 (another author) | 18 Nov 2026 | | Promoted over incumbent 87: 79.31% against 75.86% on 29 pairs, required margin 2.00 points |
+| 200 | 23 Nov 2026 | r10, keccak256 `0x71959fd8…9208` | Rejected at the public check: 10 of 15 pairs (66.7%), below the 70% floor |
+| 229 | 24 Nov 2026 | r11, keccak256 `0x572e09ed…cc5b` | Rejected at the public check: 9 of 15 pairs (60.0%) |
+| 241 | 25 Nov 2026 | r12b, keccak256 `0x17509351…5ebe` | Rejected at the public check: 10 of 15 pairs (66.7%) |
 
-**This entry does not claim Canonical status.** Registration 87 held it for part of 18 Nov 2026: it was registered at 00:33 UTC and replaced at 06:49 UTC. In the registry as read on 20 Nov 2026, 87 is ranked second and 96 is the Canonical module.
+**This entry does not claim Canonical status.** Registration 87 held it for part of 18 Nov 2026: it was registered at 00:33 UTC and replaced at 06:49 UTC. In the registry as read on 25 Nov 2026, 96 is the Canonical module and 87 is recorded as replaced, ranked second. Our three later packages failed the node's public check of 15 pairs and never reached a hidden round; see "Later packages" below.
 
 Check it yourself:
 
 ```bash
 curl -s "https://devnode.telegraphprotocol.com/api/wasm?intent=SANCTIONS_SCREENING_MATCH&resolve=SANCTIONS_SCREENING_MATCH_GENERAL" \
-  | jq '[.. | objects | select(has("registration_id")) | select(.registration_id == 87 or .registration_id == 96)] | unique_by(.registration_id) | .[] | {registration_id, stage, eval_score, rank, wasm_hash, wasm_url, reason: .eval.reason}'
+  | jq '[.. | objects | select(has("registration_id")) | select(.registration_id | IN(87, 96, 200, 229, 241))] | unique_by(.registration_id) | .[] | {registration_id, stage, eval_score, rank, wasm_hash, wasm_url, reason: (.eval.reason // .rejection_reason)}'
 ```
 
 Saved copies, read on 20 Nov 2026, are in `evidence/`:
@@ -77,11 +80,33 @@ This matters more than the totals above.
 
 We tried to fix the first three with a retrained package, r9, which added 34,494 training pairs where only the subject changes. It improved on layouts close to its new training pairs. On the reviewers' two regression files together it fell from 254 of 300 to 239 (reviewer A's file from 132 to 114; reviewer B's rose from 122 to 125). Both reviewers rejected it against pass bars they had fixed before it was scored. It was not registered.
 
+### Later packages: r10, r11 and r12b
+
+Three more packages were registered after 20 Nov. Each failed the node's public check, which needs 11 of 15 pairs, so none was scored on hidden pairs. Registration 87 is still the package this entry stands on.
+
+| Package | Registration | Node's public check | Public test files (1,136) | VishAlgoDev's published rows (1,000) |
+|---|---|---:|---:|---:|
+| r10 | 200 | 10 of 15 | 858 | 780 |
+| r11 | 229 | 9 of 15 | 933 | 618 |
+| r12b | 241 | 10 of 15 | 930 | 783 |
+| r8c, for comparison | 87 | passed | 816 | 615 |
+
+The offline columns use `score_pairs.py` on the same files as the tables above. Each package can be downloaded from the address in its registry record and checked against its hash. We used these files to compare the later packages, so they are no longer an unseen test for us. All three were trained without the 298 pool rows described below.
+
+**Where r12b's idea came from.** Our scoring server's log records token counts and scores, and no request text. Across the node's public checks of four earlier packages it showed one pattern: we ordered 15 of 16 pairs correctly when the better answer was the shorter text, and 26 of 40 when it was the longer one. We then reproduced the fault on our own test pairs: registration 87 marks an answer down for a true added detail or a caution. r12b is r11's 432,660 training pairs plus 30,000 new pairs built from the public lists, where the better answer either adds a true or cautious detail, or leaves out an overclaim or a false detail. No text the node sent was logged, read or used in training. The builder for these pairs and its review record are not in this repository; judges can have them on request.
+
+**What r12b gets wrong.**
+
+- At the node's check, by our server's log, it ordered all four pairs correctly where the better answer was clearly longer. Four of its five misses were pairs of nearly equal length, each lost by under a point of score. We do not know why.
+- It can prefer a false match that carries a caution note. On 20 fresh pairs written by reviewer A, where the customer is a different company from the listed one and the wrong answer adds a note, it ordered 4 correctly; registration 87 ordered 17.
+- When two answers differ in one fact and the right one carries a note, it ordered 19 of 50 correctly on reviewer B's unseen set; registration 87 ordered 32.
+- Before registration, reviewer B passed its file, training data and reported numbers. Reviewer A did not pass the data check: 25 listed entities that are twin partners in our withheld rows are named in training pairs carried over from r11. The withheld names themselves are not in training, and no withheld row is in any set scored here.
+
 ## Things a judge should know
 
-- **Our pool rows are in our training set.** All 298 sanctions rows we contributed to the pool (below) are included twice in the adapter's 389,448 training pairs. Its hidden-pool scores are therefore not wholly independent of its training data. Telegraph documents that the hidden sample is drawn evenly across contributors, but we have not established how many of our rows were in either 29-pair sample, and we have not measured how much this changed the result. Offline, registration 87 orders 283 of those 298 rows correctly and registration 96 orders 144. On 290 separate rows in our own style that are not in training, ours orders 251.
+- **Our pool rows are in our training set.** All 298 sanctions rows we contributed to the pool (below) are included twice in the adapter's 389,448 training pairs. Its hidden-pool scores are therefore not wholly independent of its training data. Telegraph documents that the hidden sample is drawn evenly across contributors, but we have not established how many of our rows were in either 29-pair sample, and we have not measured how much this changed the result. Offline, registration 87 orders 283 of those 298 rows correctly and registration 96 orders 144. On 290 separate rows in our own style that are not in training, ours orders 251. The later packages (registrations 200, 229 and 241) were trained without the 298 rows; r12b orders 263 of them.
 - **We also run an app that buys sanctions screening**, [Paysheet](https://github.com/Timidan/paysheet), entered in the Apps & Agents track. We run no provider.
-- **Qualification feedback.** Telegraph's documented remote check sends public qualification pairs to the author's runnable address. Validators run the hidden competition separately; the documented protocol does not send those pairs to the author's endpoint. Aggregate observations from our executor (token counts and scores) and our public-check results informed development, as the training builder's header describes. Our own statement, which this repository cannot prove: the server runs Telegraph's `adapterexec` unchanged, its log holds token counts and scores and no request text, and we did not train on text the node sent. Judges can have the log on request.
+- **Qualification feedback.** Telegraph's documented remote check sends public qualification pairs to the author's runnable address. Validators run the hidden competition separately; the documented protocol does not send those pairs to the author's endpoint. Aggregate observations from our executor (token counts and scores) and our public-check results informed development, as the training builder's header describes. Our own statement, which this repository cannot prove: the server runs Telegraph's `adapterexec` unchanged, its log holds token counts and scores and no request text, and we did not train on text the node sent. Judges can have the log on request. r12b is the clearest case of this feedback; "Later packages" above says exactly what was used.
 - **Not derived from another module.** We downloaded and scored the Canonical package for comparison only.
 - **Surface checks on the training set.** The kit's probes scored 54.7% at telling the better answer from the worse one without the question, and 50.9% from length alone. These limited checks do not rule out other answer-style shortcuts.
 
@@ -150,6 +175,7 @@ This repository supports scoring the registered packages. The builders show how 
 - One cause was in the data. A probe that never sees the question could tell our writers' better answers from worse ones by habit and length. The kit's dataset gate measures this; we should have run it first.
 - Our first packages to pass the node's public check were the ones trained on list facts: every public list entry, with one field swapped for another real entry's value. We did not isolate that as the cause.
 - A sample of 29 pairs cannot separate two modules that are one pair apart.
+- A lead on our own files still did not carry to the node. r12b was ahead of registration 87 on the public test files and on another contributor's rows, and missed the public check by one pair, as r10 did.
 
 ## Files
 
