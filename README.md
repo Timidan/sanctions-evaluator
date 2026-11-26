@@ -7,6 +7,8 @@ An entry in the Evaluators track of Telegraph Hackathon Season II. It has two pa
 
 Network activity used Telegraph's test network on Ethereum Sepolia; the comparisons ran locally with ONNX Runtime. Nothing here is a production result.
 
+Demo film (2 min 1 s): https://youtu.be/VEz6ia2LPAk. It was made on 20 Nov 2026, before the three later registrations below.
+
 ## The network record
 
 | Registration | Registered (UTC) | Package | What the node decided |
